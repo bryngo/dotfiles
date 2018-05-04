@@ -1,7 +1,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 filetype plugin on
-
+set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 
@@ -39,6 +39,19 @@ Plugin 'tomtom/tcomment_vim'
 " code completion
 Plugin 'Valloric/YouCompleteMe'
 
+" For file finding while editing
+Plugin 'ctrlpvim/ctrlp.vim'
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+" For status bars
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" For cool status bars
+" Plugin 'itchyny/lightline.vim'
+
 " For markdown
 " Plugin 'godlygeek/tabular'
 " Plugin 'plasticboy/vim-markdown'
@@ -68,6 +81,32 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" YouCompleteMe configurations
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+
+" === lightline.vim confiurations ===
+" set laststatus=2
+" let g:lightline = {
+"       \ 'component_function': {
+"       \   'filename': 'LightlineFilename',
+"       \ },
+"       \ }
+"
+" function! LightlineFilename()
+"   return &filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
+"         \ &filetype ==# 'unite' ? unite#get_status_string() :
+"         \ &filetype ==# 'vimshell' ? vimshell#get_status_string() :
+"         \ expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+" endfunction
+"
+" let g:unite_force_overwrite_statusline = 0
+" let g:vimfiler_force_overwrite_statusline = 0
+" let g:vimshell_force_overwrite_statusline = 0
+"
+" if !has('gui_running')
+"   set t_Co=256
+" endif
+" === end lightline.vim configuration ===s
 
 syntax on
 set cc=80
