@@ -5,6 +5,10 @@ set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 
+" This is needed for me to delete characters, for some reason
+set backspace=indent,eol,start
+
+
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -27,23 +31,42 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
+" For jade syntax highlighting
+Plugin 'digitaltoad/vim-jade'
+
 " Coloring Plugin
 Plugin 'sjl/badwolf'
+
+" For bracket / paraenthesis / etc completion 
+Plugin 'raimondi/delimitmate'
+
 
 " Displays changes in git file
 Plugin 'airblade/vim-gitgutter'
 
 " tcomment_vim Plugin
+" lets you quickly comment out lines of code 
 Plugin 'tomtom/tcomment_vim'
 
 " code completion
 Plugin 'Valloric/YouCompleteMe'
+
+" syntax checking
+Plugin 'scrooloose/syntastic'
+
+" for writing latex in vim
+Plugin 'lervag/vimtex'
+
 
 " For file finding while editing
 Plugin 'ctrlpvim/ctrlp.vim'
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+" For displaying file tree
+Plugin 'scrooloose/nerdtree'
+map <C-n> :NERDTreeToggle<CR>
 
 " For status bars
 Plugin 'vim-airline/vim-airline'
