@@ -1,7 +1,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 filetype plugin on
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 
@@ -40,7 +40,6 @@ Plugin 'sjl/badwolf'
 " For bracket / paraenthesis / etc completion 
 Plugin 'raimondi/delimitmate'
 
-
 " Displays changes in git file
 Plugin 'airblade/vim-gitgutter'
 
@@ -48,15 +47,27 @@ Plugin 'airblade/vim-gitgutter'
 " lets you quickly comment out lines of code 
 Plugin 'tomtom/tcomment_vim'
 
+" Distraction-free writing
+Plugin 'junegunn/goyo.vim'
+
 " code completion
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 
 " syntax checking
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
+
+" For async linting
+Plugin 'w0rp/ale'
+
+" For ALE to work with airline
+let g:airline#extensions#enabled = 1
+
+" To easily jump between errors with ALE
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " for writing latex in vim
 Plugin 'lervag/vimtex'
-
 
 " For file finding while editing
 Plugin 'ctrlpvim/ctrlp.vim'
