@@ -47,8 +47,8 @@ Plugin 'airblade/vim-gitgutter'
 " lets you quickly comment out lines of code 
 Plugin 'tomtom/tcomment_vim'
 
-" Distraction-free writing
-Plugin 'junegunn/goyo.vim'
+" Jumping around docs
+Plugin 'easymotion/vim-easymotion'
 
 " code completion
 " Plugin 'Valloric/YouCompleteMe'
@@ -57,7 +57,8 @@ Plugin 'junegunn/goyo.vim'
 " Plugin 'scrooloose/syntastic'
 
 " For async linting
-Plugin 'w0rp/ale'
+" Plugin 'w0rp/ale'
+
 
 " For ALE to work with airline
 let g:airline#extensions#enabled = 1
@@ -68,6 +69,7 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " for writing latex in vim
 Plugin 'lervag/vimtex'
+
 
 " For file finding while editing
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -82,6 +84,36 @@ map <C-n> :NERDTreeToggle<CR>
 " For status bars
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+
+" Distraction free writing
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
+
+" Color scheme
+Plugin 'reedes/vim-colors-pencil'
+
+function! s:goyo_enter()
+  " silent !tmux set status off
+  " silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  set scrolloff=999
+  set nu 
+  set cc=80
+  Limelight
+  " ...
+endfunction
+
+function! s:goyo_leave()
+  " silent !tmux set status on
+  " silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  set scrolloff=5
+  Limelight!
+  " ...
+endfunction
+
+let g:goyo_width = 80
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " For cool status bars
 " Plugin 'itchyny/lightline.vim'
